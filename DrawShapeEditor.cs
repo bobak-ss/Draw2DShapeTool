@@ -10,9 +10,9 @@ namespace DrawShapeTool
         {
             DrawShape drawShape = (DrawShape)target;
 
-            drawShape.SegmentsNum = EditorGUILayout.IntField(new GUIContent("Segments Num"), drawShape.SegmentsNum);
-            drawShape._SegmentsT = EditorGUILayout.FloatField(new GUIContent("Segments T"), drawShape._SegmentsT);
-            drawShape.MainCircleRadius = EditorGUILayout.IntField(new GUIContent("Radius"), drawShape.MainCircleRadius);
+            drawShape.segmentsNum = EditorGUILayout.IntField(new GUIContent("Segments Num"), drawShape.segmentsNum);
+            drawShape.segmentT = EditorGUILayout.FloatField(new GUIContent("Segments T"), drawShape.segmentT);
+            drawShape.radius = EditorGUILayout.FloatField(new GUIContent("Radius"), drawShape.radius);
 
             if(GUILayout.Button("Draw"))
             {
