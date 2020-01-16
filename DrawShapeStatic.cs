@@ -66,8 +66,8 @@ namespace DrawShapeTool
             Vector3 tmp = Vector3.zero;
             while(s < circlePointsNum - 1)
             {
-                Debug.Log(segmentIndex);
-                Debug.Log(s);
+                // Debug.Log(segmentIndex);
+                // Debug.Log(s);
                 tmp = segmentsPoints[segmentIndex];
                 points[s] = tmp;
                 for (int i = 1; i < eachSegSidePointCount; i++)
