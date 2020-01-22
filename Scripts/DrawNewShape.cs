@@ -21,9 +21,7 @@ namespace DrawShapeTool
             newGoLr.startWidth = 0.1f;
             newGoLr.endWidth = 0.1f;
             newGoLr.loop = true;
-            Material newMaterial = new Material(Shader.Find("Sprites/Default"));
             newGoLr.name = "New Shape";
-
         }
     }
 }

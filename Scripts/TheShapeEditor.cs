@@ -12,9 +12,9 @@ namespace DrawShapeTool
 
             using (var check = new EditorGUI.ChangeCheckScope())
             {
-                theShape.segmentsNum = EditorGUILayout.IntSlider ("Segments Num", theShape.segmentsNum, 0, 10);
+                theShape.segmentsNum = EditorGUILayout.IntSlider ("Segments Num", theShape.segmentsNum, 1, 10);
                 theShape.segmentT = EditorGUILayout.Slider("Segments T", theShape.segmentT, -10, 10);
-                theShape.radius = EditorGUILayout.Slider("Radius", theShape.radius, 0, 10);
+                theShape.radius = EditorGUILayout.Slider("Radius", theShape.radius, 1, 10);
                 
                 if (check.changed)
                 {
@@ -23,7 +23,7 @@ namespace DrawShapeTool
                 }
             }
 
-            if (GUILayout.Button("Change New Shape"))
+            if (GUILayout.Button((theShape.lineRenderer != null) ? "Apply Changes" : "Create New Shape"))
             {
                 theShape.ChangeTheShape();
             }
