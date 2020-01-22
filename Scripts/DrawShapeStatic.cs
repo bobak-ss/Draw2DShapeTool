@@ -15,7 +15,6 @@ namespace DrawShapeTool
 
         private const int circlePointsNum = 360;
         private static Vector3[] segmentsPoints;
-        private static Vector3[] segmentsDefaultCenterPoints;
         private static Vector3[] segmentsCenterPoints;
 
         public static Vector3[] SetUpPoints(int _segmentsNum, float _SegmentsT, float _mainCircleRadius)
@@ -32,23 +31,22 @@ namespace DrawShapeTool
             }
 
             // setting up segment's default center points
-            segmentsDefaultCenterPoints = new Vector3[_segmentsNum];
-            for (int i = 0; i < segmentsDefaultCenterPoints.Length; i++)
-            {
-                if (i == segmentsDefaultCenterPoints.Length - 1)
-                    segmentsDefaultCenterPoints[i] = new Vector3((segmentsPoints[i].x + segmentsPoints[0].x) / 2, (segmentsPoints[i].y + segmentsPoints[0].y) / 2, 0);
-                else
-                    segmentsDefaultCenterPoints[i] = new Vector3((segmentsPoints[i].x + segmentsPoints[i + 1].x) / 2, (segmentsPoints[i].y + segmentsPoints[i + 1].y) / 2, 0);
-            }
-            segmentsCenterPoints = segmentsDefaultCenterPoints;
-
-            float a = 0f;
+            segmentsCenterPoints = new Vector3[_segmentsNum];
             for (int i = 0; i < segmentsCenterPoints.Length; i++)
             {
-                a = (180 / _segmentsNum) + (i * (360 / _segmentsNum));
-                segmentsCenterPoints[i] = segmentsCenterPoints[i] + new Vector3(rCos(_SegmentsT, a), rSin(_SegmentsT, a), 0);
+                if (i == segmentsCenterPoints.Length - 1)
+                    segmentsCenterPoints[i] = new Vector3((segmentsPoints[i].x + segmentsPoints[0].x) / 2, (segmentsPoints[i].y + segmentsPoints[0].y) / 2, 0);
+                else
+                    segmentsCenterPoints[i] = new Vector3((segmentsPoints[i].x + segmentsPoints[i + 1].x) / 2, (segmentsPoints[i].y + segmentsPoints[i + 1].y) / 2, 0);
             }
-            // _segmentsCenterPoints = SetUpSegmentsCenterPoints(_segmentsDefaultCenterPoints, _SegmentsT, n);
+
+            // apply segment T
+            float alpha = 0f;
+            for (int i = 0; i < segmentsCenterPoints.Length; i++)
+            {
+                alpha = (180 / _segmentsNum) + (i * (360 / _segmentsNum));
+                segmentsCenterPoints[i] = segmentsCenterPoints[i] + new Vector3(rCos(_SegmentsT, alpha), rSin(_SegmentsT, alpha), 0);
+            }
 
             // setup line
             int pointsCount = segmentsPoints.Length + segmentsCenterPoints.Length;
