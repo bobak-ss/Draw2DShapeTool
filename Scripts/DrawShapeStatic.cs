@@ -57,38 +57,36 @@ namespace DrawShapeTool
                 mainPoints[i + 1] = segmentsCenterPoints[j];
             }
 
-            Vector3[] points = new Vector3[circlePointsNum];
-            int eachSegSidePointCount = circlePointsNum / (2 * segmentsNum);
-            int segmentIndex = 0;
-            int s = 0;
-            Vector3 tmp = Vector3.zero;
-            while(s < circlePointsNum - 1)
-            {
-                // Debug.Log(segmentIndex);
-                // Debug.Log(s);
-                tmp = segmentsPoints[segmentIndex];
-                points[s] = tmp;
-                for (int i = 1; i < eachSegSidePointCount; i++)
-                {
-                    points[s + i] = new Vector3( ((segmentsCenterPoints[segmentIndex].x - segmentsPoints[segmentIndex].x) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].x,
-                                                    ((segmentsCenterPoints[segmentIndex].y - segmentsPoints[segmentIndex].y) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].y,
-                                                    0);
-                }
-                s += eachSegSidePointCount;
-                points[s] = segmentsCenterPoints[segmentIndex];
-                for (int i = 1; i < eachSegSidePointCount; i++)
-                {
-                    points[s + i] = new Vector3( ((segmentsCenterPoints[segmentIndex].x - segmentsPoints[segmentIndex].x) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].x,
-                                                    ((segmentsCenterPoints[segmentIndex].y - segmentsPoints[segmentIndex].y) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].y,
-                                                    0);
-                }
-                s += eachSegSidePointCount;
-                segmentIndex++;
-            }
-
-            // lr.positionCount = mainPoints.Length;
-            // lr.SetPositions(mainPoints);
-            // lr.useWorldSpace = false;
+            // circular segments
+            // Vector3[] points = new Vector3[circlePointsNum];
+            // int eachSegSidePointCount = circlePointsNum / (2 * segmentsNum);
+            // int segmentIndex = 0;
+            // int s = 0;
+            // Vector3 tmp = Vector3.zero;
+            // while(s < circlePointsNum - 1)
+            // {
+            //     // Debug.Log(segmentIndex);
+            //     // Debug.Log(s);
+            //     tmp = segmentsPoints[segmentIndex];
+            //     points[s] = tmp;
+            //     for (int i = 1; i < eachSegSidePointCount; i++)
+            //     {
+            //         points[s + i] = new Vector3( ((segmentsCenterPoints[segmentIndex].x - segmentsPoints[segmentIndex].x) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].x,
+            //                                         ((segmentsCenterPoints[segmentIndex].y - segmentsPoints[segmentIndex].y) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].y,
+            //                                         0);
+            //     }
+            //     s += eachSegSidePointCount;
+            //     points[s] = segmentsCenterPoints[segmentIndex];
+            //     for (int i = 1; i < eachSegSidePointCount; i++)
+            //     {
+            //         points[s + i] = new Vector3( ((segmentsCenterPoints[segmentIndex].x - segmentsPoints[segmentIndex].x) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].x,
+            //                                         ((segmentsCenterPoints[segmentIndex].y - segmentsPoints[segmentIndex].y) / eachSegSidePointCount) * i + segmentsPoints[segmentIndex].y,
+            //                                         0);
+            //     }
+            //     s += eachSegSidePointCount;
+            //     segmentIndex++;
+            // }
+            
             return mainPoints;
         }
         
